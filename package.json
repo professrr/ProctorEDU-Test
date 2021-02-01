@@ -22,6 +22,7 @@
     "express-rate-limit": "^5.2.3",
     "helmet": "^4.4.1",
     "hpp": "^0.2.3",
+    "jsonwebtoken": "^8.5.1",
     "nodemon": "^2.0.7",
     "serve-static": "^1.14.1",
     "xss-clean": "^0.1.1"
