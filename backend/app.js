@@ -8,6 +8,7 @@ const serveStatic = require('serve-static');
 const path = require('path');
 const staticVue = require('./routes/static');
 const apiRoutes = require('./routes/api/index');
+const mongoSanitize = require('express-mongo-sanitize');
 
 const app = express();
 
@@ -15,6 +16,9 @@ app.use(serveStatic(__dirname + "/dist"))
 
 // Allow Cross-Origin requests
 app.use(cors());
+
+// Data sanitization against Nosql query injection
+app.use(mongoSanitize());
 
 // Set security HTTP headers
 app.use(helmet());
