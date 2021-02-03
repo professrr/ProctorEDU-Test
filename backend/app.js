@@ -12,10 +12,10 @@ const mongoSanitize = require('express-mongo-sanitize');
 
 const app = express();
 
-app.use(serveStatic(__dirname + "/dist"))
-
 // Allow Cross-Origin requests
 app.use(cors());
+
+app.use(serveStatic(__dirname + "/dist"))
 
 // Data sanitization against Nosql query injection
 app.use(mongoSanitize());

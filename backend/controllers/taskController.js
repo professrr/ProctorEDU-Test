@@ -1,5 +1,25 @@
 const Task = require('../models/Task');
+const Proctoring = require('../models/Proctoring');
 const AppError = require('../utils/appError');
+
+exports.receiveProctoring = async(req, res, next) => {
+    try {
+        const secret = req.headers['x-api-key']
+        
+        if(secret != 'secret') {
+            throw new AppError(401, 'fail', 'Источник не верифицирован')
+        }
+
+        const created_proctoring = await Proctoring.create(req.body)
+
+        res.status(200).json({
+            status: 'success',
+            data: created_proctoring
+        });
+    } catch(err) {
+        next(err)
+    }
+}
 
 exports.create = async(req, res, next) => {
     try {

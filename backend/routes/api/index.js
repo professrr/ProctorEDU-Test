@@ -5,7 +5,8 @@ const AppError = require('../../utils/appError');
 const AuthController = require('../../controllers/authController');
 const TaskController = require('../../controllers/taskController');
 
-router.post('/create/task', TaskController.create)
+router.post('/create/task', TaskController.create);
+router.post('/proctoring', TaskController.receiveProctoring)
 
 router.use(TaskController.withTask('/sign'))
 router.use(AuthController.findUser('/sign'))
